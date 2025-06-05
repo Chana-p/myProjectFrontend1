@@ -6,6 +6,17 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { STORE } from './redux/store';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
+// Initialize AOS
+AOS.init({
+  duration: 800,
+  easing: 'ease-in-out',
+  once: true,
+  mirror: false,
+  disable: 'mobile'
+});
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Provider store={STORE}>

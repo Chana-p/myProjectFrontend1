@@ -3,7 +3,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 export const getOrdersForEmpThunk = createAsyncThunk(
    'getOrdersForEmp', 
    async (id) => {
-       
+       console.log(id);
        const res = await fetch(`https://localhost:7064/api/Orders/GetByEmployee/${id}`);
       
 

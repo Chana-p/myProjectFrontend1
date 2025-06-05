@@ -152,7 +152,7 @@ export const NewOrder = () => {
 //   const dispatch = useDispatch();
 //   const [prodNum, setProdNum] = useState(0);
 //   const [myOrders, setMyOrders] = useState([]);
-//   const CID = useSelector(state => state.customer.CID);
+//   const CID = useSelector(state => state.user.CID);
 //   const employees = useSelector(state => state.emp.empList);
 //   const [employee,setEmployee] =useState("");
 

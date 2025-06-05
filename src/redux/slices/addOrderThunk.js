@@ -2,9 +2,9 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 
 export const addOrderThunk = createAsyncThunk(
     'addOrder', 
-    async ({details,id}) => {
+    async ({details,id,empId}) => {
         console.log(details);
-     const res = await fetch(`https://localhost:7064/api/Orders/addToCustomer/${id}`, {//https://localhost:7064/api/Orders/addToCustomer/12345
+     const res = await fetch(`https://localhost:7064/api/Orders/addToCustomer/${id}/${empId}`, {
         method: 'POST',
         body: JSON.stringify(details),
         headers: {

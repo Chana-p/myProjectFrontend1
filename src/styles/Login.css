@@ -1,0 +1,299 @@
+/* Login Page Styles */
+.login-page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Rubik', sans-serif;
+    direction: rtl;
+    background-color: #f8f5f2;
+    position: relative;
+  }
+  
+  .login-hero-section {
+    background: linear-gradient(135deg, #8a5a44 0%, #c17a56 100%);
+    color: white;
+    padding: 60px 0;
+    position: relative;
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+  }
+  
+  .login-wave-top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+  }
+  .register-wave-top svg {
+    height: 50px; /* שנה את הערך הזה כדי להנמיך את הגל */
+    width: 100%;
+  }
+  
+  
+  .container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+  .login-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    z-index: 1;
+  }
+  
+  .login-logo-container {
+    margin-bottom: 30px;
+  }
+  
+  .login-logo {
+    max-width: 180px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .login-form-container {
+    background-color: white;
+    border-radius: 15px;
+    padding: 40px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  
+  .login-form-container h2 {
+    color: #8a5a44;
+    margin-bottom: 30px;
+    font-size: 28px;
+  }
+  
+  .login-form {
+    text-align: right;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #5d4037;
+  }
+  
+  .form-group input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+  }
+  
+  .form-group input:focus {
+    border-color: #c17a56;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(193, 122, 86, 0.2);
+  }
+  
+  .form-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30px;
+  }
+  
+  .btn-login {
+    background-color: #c17a56;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 30px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    width: 100%;
+  }
+  
+  .btn-login:hover {
+    background-color: #8a5a44;
+    transform: translateY(-2px);
+  }
+  
+  .forgot-password {
+    margin-top: 15px;
+  }
+  
+  .forgot-password a {
+    color: #c17a56;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s;
+  }
+  
+  .forgot-password a:hover {
+    color: #8a5a44;
+    text-decoration: underline;
+  }
+  
+  .register-link {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #e0e0e0;
+  }
+  
+  .register-link p {
+    margin-bottom: 15px;
+    color: #666;
+  }
+  
+  .btn-register {
+    display: inline-block;
+    background-color: transparent;
+    color: #c17a56;
+    border: 2px solid #c17a56;
+    border-radius: 8px;
+    padding: 10px 25px;
+    font-size: 16px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.3s;
+  }
+  
+  .btn-register:hover {
+    background-color: #c17a56;
+    color: white;
+  }
+  
+  .error-message {
+    background-color: #ffebee;
+    color: #c62828;
+    padding: 10px 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-size: 14px;
+  }
+  
+  /* Footer Styles */
+  .login-footer {
+    height: 5vh;
+    background-color: #5d4037;
+    color: white;
+    padding: 20px 0;
+    margin-top: auto;
+  }
+  
+  .footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .footer-info p {
+    margin: 0;
+    font-size: 14px;
+  }
+  
+  .footer-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s;
+  }
+  
+  .footer-links a:hover {
+    color: #e0e0e0;
+    text-decoration: underline;
+  }
+  
+  .separator {
+    margin: 0 10px;
+    color: rgba(255, 255, 255, 0.5);
+  }
+  
+  /* Animation */
+  .pulse-animation {
+    animation: pulse 2s infinite;
+  }
+  
+  @keyframes pulse {
+    0% {
+      box-shadow: 0 0 0 0 rgba(193, 122, 86, 0.7);
+    }
+    70% {
+      box-shadow: 0 0 0 10px rgba(193, 122, 86, 0);
+    }
+    100% {
+      box-shadow: 0 0 0 0 rgba(193, 122, 86, 0);
+    }
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 768px) {
+    .login-form-container {
+      padding: 30px 20px;
+    }
+    
+    .footer-content {
+      flex-direction: column;
+      text-align: center;
+    }
+    
+    .footer-info {
+      margin-bottom: 15px;
+    }
+  }
+  .container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+  @media (min-width: 1400px) {
+    .container {
+      max-width: 1360px;
+    }
+  }
+  
+  @media (min-width: 1600px) {
+    .container {
+      max-width: 1520px;
+    }
+  }
+  .register-hero-section {
+    position: relative;
+    overflow: hidden; /* חשוב להוסיף כדי שהגלים לא יחרגו מהאלמנט */
+  }
+  
+  .register-wave-top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1; /* להבטיח שהגל מעל הרקע אבל מתחת לתוכן */
+  }
+  
+  .register-wave-bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+  }
+  
+  .register-content {
+    position: relative;
+    z-index: 2; /* להבטיח שהתוכן מעל הגלים */
+  }
+    

@@ -1,0 +1,69 @@
+/* General app styling */
+body {
+    font-family: 'Rubik', sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .app-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .main-content {
+    flex: 1;
+  }
+  
+  /* RTL support */
+  .rtl {
+    direction: rtl;
+    text-align: right;
+  }
+  
+  /* Common button styles */
+  .btn-primary {
+    background-color: #1e5799;
+    border-color: #1e5799;
+  }
+  
+  .btn-primary:hover {
+    background-color: #164279;
+    border-color: #164279;
+  }
+  
+  /* Card styling */
+  .card {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+  }
+  
+  .card-header {
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #e9ecef;
+    font-weight: 600;
+  }
+  
+  /* Form styling */
+  .form-control {
+    border-radius: 8px;
+    padding: 10px 15px;
+    border: 1px solid #ced4da;
+  }
+  
+  .form-control:focus {
+    border-color: #1e5799;
+    box-shadow: 0 0 0 0.2rem rgba(30, 87, 153, 0.25);
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .container {
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+  }
+  

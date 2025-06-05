@@ -23,7 +23,7 @@ import HandymanIcon from '@mui/icons-material/Handyman';
 export const ServicePage = () => {
 
 
-    const id = useSelector(state => state.customer.EID);
+    const id = useSelector(state => state.user.EID);
     const olds = useSelector(state => state.Orders.myOrders);
     const details = useSelector(state => state.Orders.orderDetail);
     const dispatch = useDispatch();
