@@ -552,7 +552,7 @@ console.log(event.target.value);
                   filteredProducts.map(product => (
                     <div className="product-card" key={product.prodId} data-aos="fade-up">
                       <div className="product-image">
-                        <img src={`${`https://localhost:7064/img/${product.ppicture}`}`} alt={product.name} />
+                        <img src={`${`https://myFirstProjectBackend.onrender.com/img/${product.ppicture}`}`} alt={product.name} />
                       </div>
                       <div className="product-details">
                         <h3>{product.pname}</h3>

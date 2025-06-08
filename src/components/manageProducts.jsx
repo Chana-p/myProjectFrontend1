@@ -691,7 +691,7 @@ export const ManageProducts = () => {
     formData.append('file', selectedImage); // שינוי מ-'image' ל-'file'
   
     try {
-      const response = await fetch('https://localhost:7064/api/Img/upload', {
+      const response = await fetch('https://myFirstProjectBackend.onrender.com/api/Img/upload', {
         method: 'POST',
         body: formData,
       });
@@ -944,7 +944,7 @@ export const ManageProducts = () => {
           
 <StyledCardMedia
   component="img"
-  image={`https://localhost:7064/img/${product.ppicture}`}
+  image={`https://myFirstProjectBackend.onrender.com/img/${product.ppicture}`}
   alt={product.pname}
   onError={(e) => {
     e.target.src = 'https://placehold.co/300x180/cccccc/333333?text=No+Image';

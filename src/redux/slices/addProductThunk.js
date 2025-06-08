@@ -5,7 +5,7 @@
 //     async ({details}) => {
 //         console.log("addProductThunk");
 //         console.log(details);
-//      const res = await fetch(`https://localhost:7064/api/Products/Add`, {//https://localhost:7064/api/Orders/addToCustomer/12345
+//      const res = await fetch(`https://myFirstProjectBackend.onrender.com/api/Products/Add`, {//https://myFirstProjectBackend.onrender.com/api/Orders/addToCustomer/12345
 //         method: 'POST',
 //         body: JSON.stringify(details),
 //         headers: {
@@ -45,7 +45,7 @@ export const addProductThunk = createAsyncThunk(
       
       console.log("Sending to server:", productToAdd);
       
-      const response = await fetch('https://localhost:7064/api/Products/Add', {
+      const response = await fetch('https://myFirstProjectBackend.onrender.com/api/Products/Add', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

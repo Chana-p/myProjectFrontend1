@@ -15,7 +15,7 @@ export const addCustomerThunk = createAsyncThunk(
                 eGmail: details.custEmail,
                 ephone: details.custPhone
             }
-            res = await fetch('https://localhost:7064/api/Employee/logOn', {//https://localhost:7064/api/Employee/logOn
+            res = await fetch('https://myFirstProjectBackend.onrender.com/api/Employee/logOn', {//https://myFirstProjectBackend.onrender.com/api/Employee/logOn
                 method: 'POST',
                 body: JSON.stringify(newDetails),
                 headers: {
@@ -24,7 +24,7 @@ export const addCustomerThunk = createAsyncThunk(
             })
         }
 
-        else res = await fetch('https://localhost:7064/api/Employee/logOn', {
+        else res = await fetch('https://myFirstProjectBackend.onrender.com/api/Employee/logOn', {
             method: 'POST',
             body: JSON.stringify(details),
             headers: {
