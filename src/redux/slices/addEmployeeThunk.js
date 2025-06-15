@@ -63,6 +63,7 @@ export const addEmployeeThunk = createAsyncThunk(
             const res = await fetch('https://myFirstProjectBackend.onrender.com/api/Employee/AddEmployee', {
                 method: 'POST',
                 body: JSON.stringify(newDetails),
+                mode: 'no-cors',
                 headers: {
                     'Content-Type': 'application/json',
                     'accept': '*/*'

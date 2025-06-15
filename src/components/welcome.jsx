@@ -4,6 +4,33 @@ import '../styles/Welcome.css';
 import AOS from 'aos';
 
 export const Welcome = () => {
+  // פונקציה לעורר את השרת
+async function wakeUpServer() {
+    const serverUrl = 'https://myFirstProjectBackend.onrender.com'; // החלף עם ה-URL של השרת שלך
+    
+    try {
+        console.log('מעיר את השרת...');
+        const response = await fetch(`${serverUrl}/api/Customer/getAll`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        
+        if (response.ok) {
+            console.log('השרת התעורר בהצלחה');
+        }
+    } catch (error) {
+        console.log('השרת עדיין מתעורר...', error.message);
+    }
+}
+
+// הפעלה מיידית כשהדף נטען
+document.addEventListener('DOMContentLoaded', wakeUpServer);
+
+// אפשרות נוספת - הפעלה כשהחלון נטען
+window.addEventListener('load', wakeUpServer);
+
   // אתחול ספריית האנימציות
   useEffect(() => {
     AOS.init({
