@@ -33,7 +33,7 @@
 // //     }, [failed, CID, EID])
 
 // //     const backgroundStyle = {
-// //         backgroundImage: `linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), url(${process.env.PUBLIC_URL}/basisLabait.jpg)`,
+// //         backgroundImage: `linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), url(${process.env.PUBLIC_URL}/basisLabait2.jpg)`,
 // //         backgroundSize: 'cover',
 // //         backgroundPosition: 'center',
 // //         backgroundRepeat: 'no-repeat',
@@ -303,7 +303,7 @@
 //                 <div className="container">
 //                     <div className="login-content" data-aos="fade-up">
 //                         <div className="login-logo-container">
-//                             <img src={`${process.env.PUBLIC_URL}/basisLabait.jpg`} alt="בסיס לבית" className="login-logo" />
+//                             <img src={`${process.env.PUBLIC_URL}/basisLabait2.jpg`} alt="בסיס לבית" className="login-logo" />
 //                         </div>
 //                         <div className="login-form-container" data-aos="fade-up" data-aos-delay="200">
 //                             <h2>התחברות למערכת</h2>
@@ -460,7 +460,7 @@ export const Login = () => {
                 <div className="container">
                     <div className="login-content" data-aos="fade-up">
                         <div className="login-logo-container">
-                            <img src={`${process.env.PUBLIC_URL}/basisLabait.jpg`} alt="בסיס לבית" className="login-logo" />
+                            <img src={`${process.env.PUBLIC_URL}/basisLabait2.jpg`} alt="בסיס לבית" className="login-logo" />
                         </div>
                         <div className="login-form-container" data-aos="fade-up" data-aos-delay="200">
                             <h2>התחברות למערכת</h2>

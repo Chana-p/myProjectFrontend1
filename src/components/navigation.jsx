@@ -239,7 +239,7 @@ export const Navigation = () => {
             
             {/* לוגו - מוצג בכל גודל מסך */}
             <Logo>
-              <img src={`${process.env.PUBLIC_URL}/basisLabait.jpg`} alt="Logo" />
+              <img src={`${process.env.PUBLIC_URL}/basisLabait2.jpg`} alt="Logo" />
               בניה ישירה
             </Logo>
 

@@ -198,7 +198,7 @@ export const NewCustomer = () => {
         <div className="container">
           <div className="register-content" data-aos="fade-up">
             <div className="register-logo-container">
-              <img src={`${process.env.PUBLIC_URL}/basisLabait.jpg`} style={{height:"10%",}} alt="בסיס לבית" className="register-logo" />
+              <img src={`${process.env.PUBLIC_URL}/basisLabait2.jpg`} style={{height:"10%",}} alt="בסיס לבית" className="register-logo" />
             </div>
             <div className="register-form-container" data-aos="fade-up" data-aos-delay="200">
               <h2>הרשמה כלקוח חדש</h2>

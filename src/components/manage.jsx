@@ -94,7 +94,7 @@
 //       }));
 
 //     return <div >
-//       {/* style={{ backgroundImage: `url(${process.env.PUBLIC_URL + "/basisLabait.jpg"})`, height: "90vh" ,width:"100%"}} */}
+//       {/* style={{ backgroundImage: `url(${process.env.PUBLIC_URL + "/basisLabait2.jpg"})`, height: "90vh" ,width:"100%"}} */}
 // <h1 style={{fontSize:"70px"}}>wellcome manager</h1>
 
 // <Box sx={{ display: 'flex', flexWrap: 'wrap', minWidth: 300, width: '100%' }}>

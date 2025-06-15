@@ -47,7 +47,7 @@ window.addEventListener('load', wakeUpServer);
         <div className="container">
           <div className="hero-content" data-aos="fade-up">
             <div className="logo-container">
-              <img src={`${process.env.PUBLIC_URL}/basisLabait.jpg`} alt="בסיס לבית" className="hero-logo" />
+              <img src={`${process.env.PUBLIC_URL}/basisLabait2.jpg`} alt="בסיס לבית" className="hero-logo" />
             </div>
             <h1 data-aos="fade-up" data-aos-delay="200">פתרונות סיטונאיים מקצועיים לענף הבנייה</h1>
             <p data-aos="fade-up" data-aos-delay="300">הפלטפורמה המובילה להזמנת חומרי בניה, כלי עבודה וציוד מקצועי עבור חנויות, קבלנים ואנשי מקצוע</p>
@@ -239,7 +239,7 @@ window.addEventListener('load', wakeUpServer);
             <p>החזון שלנו הוא להיות הספק המוביל בתחום חומרי הבניה והציוד המקצועי בישראל, תוך שמירה על ערכי השירות, האיכות והמקצועיות.</p>
           </div>
           <div className="about-image" data-aos="fade-left">
-            <img src={`${process.env.PUBLIC_URL}/basisLabait.jpg`} alt="בסיס לבית" className="about-logo" />
+            <img src={`${process.env.PUBLIC_URL}/basisLabait2.jpg`} alt="בסיס לבית" className="about-logo" />
           </div>
         </div>
       </div>
@@ -292,7 +292,7 @@ window.addEventListener('load', wakeUpServer);
         </div>
         <div className="footer-bottom">
           <div className="footer-logo" data-aos="zoom-in">
-            <img src={`${process.env.PUBLIC_URL}/basisLabait.jpg`} alt="בסיס לבית" />
+            <img src={`${process.env.PUBLIC_URL}/basisLabait2.jpg`} alt="בסיס לבית" />
           </div>
           <p>© 2025 כל הזכויות שמורות לחברת בסיס לבית בע"מ</p>
         </div>

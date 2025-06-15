@@ -61,8 +61,8 @@
 
 // //     return <div 
     
-// //     style={{ backgroundImage: `url(${process.env.PUBLIC_URL + "/basisLabait.jpg"})`, height: "90vh" }}>
-// //         <ImageSrc style={{ backgroundImage: `url(${process.env.PUBLIC_URL + "/basisLabait.jpg"})` }} />
+// //     style={{ backgroundImage: `url(${process.env.PUBLIC_URL + "/basisLabait2.jpg"})`, height: "90vh" }}>
+// //         <ImageSrc style={{ backgroundImage: `url(${process.env.PUBLIC_URL + "/basisLabait2.jpg"})` }} />
 // //         <ImageBackdrop className="MuiImageBackdrop-root" />
 // //         <Image> <Typography component="span" variant="subtitle1" color="inherit" sx={(theme) => ({
 // //             fontFamily: "cursive",
@@ -188,8 +188,8 @@
 //     }));
 
 //     return <div 
-//         style={{ backgroundImage: `url(${process.env.PUBLIC_URL + "/basisLabait.jpg"})`, height: "90vh" }}>
-//         <ImageSrc style={{ backgroundImage: `url(${process.env.PUBLIC_URL + "/basisLabait.jpg"})` }} />
+//         style={{ backgroundImage: `url(${process.env.PUBLIC_URL + "/basisLabait2.jpg"})`, height: "90vh" }}>
+//         <ImageSrc style={{ backgroundImage: `url(${process.env.PUBLIC_URL + "/basisLabait2.jpg"})` }} />
 //         <ImageBackdrop className="MuiImageBackdrop-root" />
 //         <Image>
 //             <ContentContainer>
@@ -366,7 +366,7 @@ export const Home = () => {
         <div className="container">
           <div className="header-content">
             <div className="logo-container">
-              <img src={`${process.env.PUBLIC_URL}/basisLabait.jpg`} alt="בסיס לבית" className="header-logo" />
+              <img src={`${process.env.PUBLIC_URL}/basisLabait2.jpg`} alt="בסיס לבית" className="header-logo" />
             </div>
             <div className="header-actions">
               <div className="user-welcome">
@@ -402,7 +402,7 @@ export const Home = () => {
               <Link to="/newOrder" className="btn-primary">התחל בקנייה</Link>
             </div>
             <div className="banner-image">
-              <img  src={`${process.env.PUBLIC_URL}/basisLabait.jpg`} alt="בסיס לבית" />
+              <img  src={`${process.env.PUBLIC_URL}/basisLabait2.jpg`} alt="בסיס לבית" />
             </div>
           </section>
 
@@ -560,7 +560,7 @@ export const Home = () => {
         <div className="container">
           <div className="footer-content">
             <div className="footer-logo">
-              <img src={`${process.env.PUBLIC_URL}/basisLabait.jpg`} alt="בסיס לבית" />
+              <img src={`${process.env.PUBLIC_URL}/basisLabait2.jpg`} alt="בסיס לבית" />
             </div>
             <div className="footer-info">
               <p>© 2023 כל הזכויות שמורות לחברת בסיס לבית בע"מ</p>
