@@ -38,7 +38,7 @@ const quickLogin = (username, password, userType) => {
     if (userType !== 'customer') {
   username="emp" + username;
     }
-    let details={username, password};
+    let details={customername: username, password};
     dispatch(logInThunk(details));
 };
 useEffect(() => {
