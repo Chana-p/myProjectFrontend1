@@ -1201,4 +1201,197 @@
       flex: 0 0 100%; /* One item per row on small screens */
     }
   }
+  .demo-note i {
+  margin-left: 10px;
+  color: #ffd700;
+}
+
+/* Responsive Design for Demo Section */
+@media (max-width: 768px) {
+  .demo-section {
+    padding: 60px 0;
+  }
   
+  .demo-cards {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .demo-card {
+    padding: 25px 20px;
+  }
+  
+  .demo-icon {
+    font-size: 2.5rem;
+  }
+  
+  .demo-card h3 {
+    font-size: 1.3rem;
+  }
+  
+  .demo-btn {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+  
+  .demo-subtitle {
+    font-size: 1.1rem;
+    padding: 0 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .demo-section {
+    padding: 40px 0;
+  }
+  
+  .demo-card {
+    padding: 20px 15px;
+  }
+  
+  .demo-icon {
+    font-size: 2rem;
+  }
+  
+  .demo-card h3 {
+    font-size: 1.2rem;
+  }
+  
+  .demo-card p {
+    font-size: 0.9rem;
+  }
+  
+  .demo-btn {
+    padding: 8px 16px;
+    font-size: 0.8rem;
+  }
+}
+
+/* Animation for demo buttons */
+.demo-btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.demo-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.demo-btn:hover::before {
+  left: 100%;
+}
+
+/* Pulse animation for demo cards */
+@keyframes demo-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(255, 215, 0, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 215, 0, 0);
+  }
+}
+/* Demo Section Styles */
+.demo-section {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 80px 0;
+  color: white;
+}
+
+.demo-subtitle {
+  text-align: center;
+  font-size: 1.2rem;
+  margin-bottom: 50px;
+  opacity: 0.9;
+}
+
+.demo-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+.demo-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  padding: 30px;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.demo-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.demo-icon {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  color: #ffd700;
+}
+
+.demo-card h3 {
+  margin-bottom: 15px;
+  font-size: 1.5rem;
+}
+
+.demo-card p {
+  margin-bottom: 25px;
+  opacity: 0.9;
+  line-height: 1.6;
+}
+
+.demo-btn {
+  padding: 12px 25px;
+  border: none;
+  border-radius: 25px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+}
+
+.btn-customer {
+  background: linear-gradient(45deg, #4CAF50, #45a049);
+  color: white;
+}
+
+.btn-employee {
+  background: linear-gradient(45deg, #2196F3, #1976D2);
+  color: white;
+}
+
+.btn-manager {
+  background: linear-gradient(45deg, #FF9800, #F57C00);
+  color: white;
+}
+
+.demo-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.demo-note {
+  text-align: center;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 15px;
+  border-radius: 10px;
+  border-left: 4px solid #ffd700;
+}
+
+.demo-note i {
+  margin-left: 10px;
+  color: #ffd700;
+}
