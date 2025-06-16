@@ -28,12 +28,50 @@ async function wakeUpServer() {
 }
 //פונקצית התחברות מהירה למשתמשים לדוגמה
 const dispatch= useDispatch();
+const CID = useSelector(state => state.user.CID);
+    const EID = useSelector(state => state.user.EID);
+    const failed = useSelector(state => state.user.failed);
 const quickLogin = (username, password, userType) => {
     // כאן תוכל להוסיף את הלוגיקה להתחברות מהירה למשתמשים לדוגמה
     console.log(`מתחבר כ-${userType}: ${username}`);
-   let details={username, password};
-    dispatch(logInThunk(details))
+    if (userType !== 'customer') {
+  username="emp" + username;
+    }
+    let details={username, password};
+    dispatch(logInThunk(details));
 };
+useEffect(() => {
+        // מונע ניווט בטעינה הראשונית אם אין צורך
+        if (CID === undefined || EID === undefined || failed === undefined) {
+            return;
+        }
+
+        if (CID !== -1) {
+            navigate(`/Home`);
+            return; // חשוב להוסיף return כדי למנוע בדיקות נוספות
+        }
+        
+        if (EID === 1) {
+            navigate(`/Manage`);
+            return;
+        }
+        
+        if (EID !== -1 && EID !== 1) {
+            navigate(`/listOrdersForEmployee`);
+            return;
+        }
+        
+        if (CID === -1 && failed) {
+            setNewcustomer(true);
+            navigate(`/newcustomer`);
+            return;
+        }
+        
+        // לוגים רק אם לא בוצע ניווט
+        console.log("failed: " + failed);
+        console.log("cid: " + CID);
+        console.log("eid: " + EID);
+    }, [failed, CID, EID, navigate]); 
 // הפעלה מיידית כשהדף נטען
 document.addEventListener('DOMContentLoaded', wakeUpServer);
 
@@ -136,7 +174,7 @@ window.addEventListener('load', wakeUpServer);
             </div>
             <div className="product-category" data-aos="flip-left" data-aos-delay="300">
               <div className="category-image plumbing">
-              <img height={"auto"} width={"100%"} src={`${process.env.PUBLIC_URL}/tzaneret3.jpg`} alt="חומרי בניין" />
+              <img height={"auto"} width={"100%"} src={`${process.env.PUBLIC_URL}/cleyavoda.jpg`} alt="חומרי בניין" />
 
               </div>
               <h3>אינסטלציה</h3>
@@ -270,65 +308,6 @@ window.addEventListener('load', wakeUpServer);
         </div>
       </div>
     </div>
-
-{/* Demo Section */}
-<div className="demo-section">
-  <div className="section-wave-top">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-      <path fill="#ffffff" fillOpacity="1" d="M0,160L48,170.7C96,181,192,203,288,202.7C384,203,480,181,576,165.3C672,149,768,139,864,154.7C960,171,1056,213,1152,218.7C1248,224,1344,192,1392,176L1440,160L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path>
-    </svg>
-  </div>
-  <div className="container">
-    <h2 className="section-title" data-aos="fade-up">טעימה מהמערכת</h2>
-    <p className="demo-subtitle" data-aos="fade-up" data-aos-delay="100">
-      רוצים לראות איך המערכת עובדת? התחברו כמשתמש לדוגמה וחוו את המערכת בעצמכם
-    </p>
-    <div className="demo-cards">
-      <div className="demo-card" data-aos="zoom-in" data-aos-delay="100">
-        <div className="demo-icon">
-          <i className="fas fa-user"></i>
-        </div>
-        <h3>התחברות כלקוח</h3>
-        <p>חוו את המערכת מנקודת המבט של לקוח - עיון בקטלוג, הוספה לסל ויצירת הזמנות</p>
-        <button 
-          className="demo-btn btn-customer"
-          onClick={() => quickLogin('jonatan', '12345', 'customer')}
-        >
-          התחבר כלקוח יונתן
-        </button>
-      </div>
-      <div className="demo-card" data-aos="zoom-in" data-aos-delay="200">
-        <div className="demo-icon">
-          <i className="fas fa-user-tie"></i>
-        </div>
-        <h3>התחברות כעובד</h3>
-        <p>ראו איך עובדים מנהלים הזמנות, מעדכנים מלאי ומטפלים בפניות לקוחות</p>
-        <button 
-          className="demo-btn btn-employee"
-          onClick={() => quickLogin('moshe', '4545', 'employee')}
-        >
-          התחבר כעובד משה
-        </button>
-      </div>
-      <div className="demo-card" data-aos="zoom-in" data-aos-delay="300">
-        <div className="demo-icon">
-          <i className="fas fa-user-cog"></i>
-        </div>
-        <h3>התחברות כמנהל</h3>
-        <p>גישה מלאה למערכת - ניהול משתמשים, דוחות, הגדרות מערכת ועוד</p>
-        <button 
-          className="demo-btn btn-manager"
-          onClick={() => quickLogin('manager', '1', 'manager')}
-        >
-          התחבר כמנהל
-        </button>
-      </div>
-    </div>
-    <div className="demo-note" data-aos="fade-up" data-aos-delay="400">
-      <p><i className="fas fa-info-circle"></i> זוהי גרסת הדגמה - כל הנתונים הם לדוגמה בלבד</p>
-    </div>
-  </div>
-</div>
 
 {/* Demo Section */}
 <div className="demo-section">
