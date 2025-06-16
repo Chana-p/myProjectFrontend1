@@ -12,7 +12,7 @@ export const logInThunk = createAsyncThunk(
         res = await fetch(`https://myFirstProjectBackend.onrender.com/api/Employee/logIn/${details.password}/${details.customername}`);
        }
        else {
-        log("customerfetch");
+        console.log("customerfetch");
          res = await fetch(`https://myFirstProjectBackend.onrender.com/api/Customer/logIn/${details.password}/${details.customername}`);
        } 
         if (res.ok) {
