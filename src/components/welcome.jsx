@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/Welcome.css';
 import AOS from 'aos';
+import { useDispatch } from 'react-redux';
 
 export const Welcome = () => {
   // פונקציה לעורר את השרת
@@ -39,7 +40,21 @@ window.addEventListener('load', wakeUpServer);
       mirror: true
     });
   }, []);
+//לצורך התחברות מהירה 
+const dispatch = useDispatch();
 
+const quickLogin = async (username, password, userType) => {
+//  if(userType === 'customer') { 
+  //  dispatch(editPassword(details.password));
+  //        console.log("dispatch(editPassword(details.password))");
+  //        dispatch(editcustomername(details.customername));
+  //        console.log("dispatch(editcustomername(details.customername))");
+  
+         dispatch(logInThunk({username,password}));
+         console.log("dispatch(logInThunk(details))");
+//  }
+    
+};
   return (
     <div className="welcome-page">
       {/* Hero Section */}
@@ -261,7 +276,64 @@ window.addEventListener('load', wakeUpServer);
         </div>
       </div>
     </div>
-
+{/* Demo Section */}
+<div className="demo-section">
+  <div className="section-wave-top">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+      <path fill="#ffffff" fillOpacity="1" d="M0,160L48,170.7C96,181,192,203,288,202.7C384,203,480,181,576,165.3C672,149,768,139,864,154.7C960,171,1056,213,1152,218.7C1248,224,1344,192,1392,176L1440,160L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path>
+    </svg>
+  </div>
+  <div className="container">
+    <h2 className="section-title" data-aos="fade-up">טעימה מהמערכת</h2>
+    <p className="demo-subtitle" data-aos="fade-up" data-aos-delay="100">
+      רוצים לראות איך המערכת עובדת? התחברו כמשתמש לדוגמה וחוו את המערכת בעצמכם
+    </p>
+    <div className="demo-cards">
+      <div className="demo-card" data-aos="zoom-in" data-aos-delay="100">
+        <div className="demo-icon">
+          <i className="fas fa-user"></i>
+        </div>
+        <h3>התחברות כלקוח</h3>
+        <p>חוו את המערכת מנקודת המבט של לקוח - עיון בקטלוג, הוספה לסל ויצירת הזמנות</p>
+        <button 
+          className="demo-btn btn-customer"
+          onClick={() => quickLogin('jonatan', '12345', 'customer')}
+        >
+          התחבר כלקוח יונתן
+        </button>
+      </div>
+      <div className="demo-card" data-aos="zoom-in" data-aos-delay="200">
+        <div className="demo-icon">
+          <i className="fas fa-user-tie"></i>
+        </div>
+        <h3>התחברות כעובד</h3>
+        <p>ראו איך עובדים מנהלים הזמנות, מעדכנים מלאי ומטפלים בפניות לקוחות</p>
+        <button 
+          className="demo-btn btn-employee"
+          onClick={() => quickLogin('moshe', '4545', 'employee')}
+        >
+          התחבר כעובד משה
+        </button>
+      </div>
+      <div className="demo-card" data-aos="zoom-in" data-aos-delay="300">
+        <div className="demo-icon">
+          <i className="fas fa-user-cog"></i>
+        </div>
+        <h3>התחברות כמנהל</h3>
+        <p>גישה מלאה למערכת - ניהול משתמשים, דוחות, הגדרות מערכת ועוד</p>
+        <button 
+          className="demo-btn btn-manager"
+          onClick={() => quickLogin('manager', '1', 'manager')}
+        >
+          התחבר כמנהל
+        </button>
+      </div>
+    </div>
+    <div className="demo-note" data-aos="fade-up" data-aos-delay="400">
+      <p><i className="fas fa-info-circle"></i> זוהי גרסת הדגמה - כל הנתונים הם לדוגמה בלבד</p>
+    </div>
+  </div>
+</div>
     {/* Footer */}
     <footer className="welcome-footer">
       <div className="container">
