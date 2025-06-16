@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import '../styles/Welcome.css';
 import AOS from 'aos';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { logInThunk } from "../redux/slices/logInThunk";
 
 export const Welcome = () => {
@@ -28,6 +28,7 @@ async function wakeUpServer() {
 }
 //פונקצית התחברות מהירה למשתמשים לדוגמה
 const dispatch= useDispatch();
+const navigate = useNavigate();
 const CID = useSelector(state => state.user.CID);
     const EID = useSelector(state => state.user.EID);
     const failed = useSelector(state => state.user.failed);
@@ -60,12 +61,7 @@ useEffect(() => {
             navigate(`/listOrdersForEmployee`);
             return;
         }
-        
-        if (CID === -1 && failed) {
-            setNewcustomer(true);
-            navigate(`/newcustomer`);
-            return;
-        }
+      
         
         // לוגים רק אם לא בוצע ניווט
         console.log("failed: " + failed);
