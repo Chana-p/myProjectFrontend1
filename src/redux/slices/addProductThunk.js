@@ -1,29 +1,3 @@
-// import { createAsyncThunk } from "@reduxjs/toolkit";
-
-// export const addProductThunk = createAsyncThunk(
-//     'addProduct', 
-//     async ({details}) => {
-//         console.log("addProductThunk");
-//         console.log(details);
-//      const res = await fetch(`https://myFirstProjectBackend.onrender.com/api/Products/Add`, {//https://myFirstProjectBackend.onrender.com/api/Orders/addToCustomer/12345
-//         method: 'POST',
-//         body: JSON.stringify(details),
-//         headers: {
-//             'Content-Type': 'application/json'
-//         }
-//     })
-//     if (res.ok) {
-//         const data = await res.json();
-//         console.log("fetch add product to sever with picture");
-//         return data;
-//     }
-//     else {
-//         console.log("failed to fetch😒");
-//         throw new Error('failed to fetch😒');
-//     }
-//     }
-// )
-// src/redux/slices/addProductThunk.js
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
 export const addProductThunk = createAsyncThunk(
@@ -32,13 +6,14 @@ export const addProductThunk = createAsyncThunk(
     try {
       console.log("addProductThunk", productData);
       
-      // וודא שכל השדות הנדרשים קיימים
+      // וודא שכל השדות הנדרשים קיימים ובפורמט הנכון
       const productToAdd = {
         prodId: 0, // השרת יקצה ID
         pname: productData.pname,
-        psum: productData.psum,
-        pimporter: productData.pimporter || "defaultImporter", // ספק ערך ברירת מחדל אם חסר
-        pcompany: productData.pcompany || "defaultCompany", // ספק ערך ברירת מחדל אם חסר
+        psum: parseInt(productData.psum) || 0, // המרה למספר
+        pprice: parseFloat(productData.pprice) || 0, // המרה למספר
+        pimporter: productData.pimporter || "defaultImporter",
+        pcompany: productData.pcompany || "defaultCompany",
         ppicture: productData.ppicture || "",
         pdescription: productData.pdescription || ""
       };
@@ -49,21 +24,23 @@ export const addProductThunk = createAsyncThunk(
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'accept': 'text/plain'
+          'Accept': 'application/json'
         },
         body: JSON.stringify(productToAdd)
       });
-      
+
       if (!response.ok) {
         const errorText = await response.text();
-        console.error("Server error:", errorText);
-        return rejectWithValue(`Server error: ${response.status} - ${errorText}`);
+        console.error('Server error:', errorText);
+        throw new Error(`Server error: ${response.status} - ${errorText}`);
       }
-      
+
       const data = await response.json();
+      console.log("Product added successfully:", data);
       return data;
+      
     } catch (error) {
-      console.error("failed to fetch", error);
+      console.error('Add product error:', error);
       return rejectWithValue(error.message);
     }
   }

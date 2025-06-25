@@ -520,7 +520,10 @@ export const ManageProducts = () => {
           
 <StyledCardMedia
   component="img"
-  image={`https://myFirstProjectBackend.onrender.com${product.ppicture}`}
+  image={product.ppicture?.startsWith('http') 
+    ? product.ppicture 
+    : `https://myFirstProjectBackend.onrender.com${product.ppicture}`
+  }
   alt={product.pname}
   onError={(e) => {
     e.target.src = 'https://placehold.co/300x180/cccccc/333333?text=No+Image';
