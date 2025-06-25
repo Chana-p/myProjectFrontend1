@@ -3,7 +3,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 export const getAllemployeesThunk = createAsyncThunk(
     'getEmployees',
     async () => {
-        const res = await fetch(`https://localhost:7064/api/Employee/GetAll`);
+        const res = await fetch(`https://myFirstProjectBackend.onrender.com/api/Employee/GetAll`);
 
         if (res.ok) {
             const data = await res.json();

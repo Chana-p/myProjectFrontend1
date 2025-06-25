@@ -4,7 +4,7 @@ export const getCompletedOrdersForEmpThunk = createAsyncThunk(
    'getCompletedOrdersForEmp', 
    async (id) => {
        console.log(id);
-       const res = await fetch(`https://localhost:7064/api/Orders/GetCompletedByEmployee/${id}`);
+       const res = await fetch(`https://myFirstProjectBackend.onrender.com/api/Orders/GetCompletedByEmployee/${id}`);
       
 
        if (res.ok) {

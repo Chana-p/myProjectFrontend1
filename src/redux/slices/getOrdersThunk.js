@@ -5,7 +5,7 @@ export const getOrdersThunk = createAsyncThunk(
    
    async (id) => {
        
-       const res = await fetch(`https://localhost:7064/api/Orders/GetByCustomer/${id}`);
+       const res = await fetch(`https://myFirstProjectBackend.onrender.com/api/Orders/GetByCustomer/${id}`);
       
 
        if (res.ok) {

@@ -7,7 +7,7 @@ export const addCustomerThunk = createAsyncThunk(
         let res;
         console.log(details.custName);
        
-        res = await fetch('https://localhost:7064/api/Customer/logOn', {
+        res = await fetch('https://myFirstProjectBackend.onrender.com/api/Customer/logOn', {
             method: 'POST',
             body: JSON.stringify(details),
             headers: {
