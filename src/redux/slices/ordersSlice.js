@@ -5,12 +5,14 @@ import { getOrderDetailsThunk } from "./getOrderDetailsThunk";
 import { getOrdersForEmpThunk } from "./getOrdersForEmpThunk";
 import { UpdateSendingThunk } from "./updateSending";
 import { getNewOrdersForEmpThunk } from "./getNewOrdersForEmp";
-// import { assignOrdersToEmpThunk } from "./assignOrdersToEmpThunk";
-// import { getCompletedOrdersForEmpThunk } from "./getCompletedOrdersForEmpThunk";
+import { assignOrdersToEmpThunk } from "./assignOrdersToEmpThunk";
+import { getCompletedOrdersForEmpThunk } from "./getCompletedOrdersForEmpThunk";
+import { getAllOrderDetailsThunk } from "./getAllOrderDetailsThunk";
 
 export const INITAIL_STATE_ORDERS = {
     myOrders: [],
     orderDetail: [],
+    allOrderDetail: [],
     newOrders: [],
     completedOrders: [],
     ordersForManage: [],
@@ -83,24 +85,33 @@ console.log(state.newOrders);
         builder.addCase(UpdateSendingThunk.rejected, (state, action) => {
             console.log("order action: ", action);
         });
-//         builder.addCase(assignOrdersToEmpThunk.fulfilled, (state, action) => {
-//             console.log("assign order succeed");
+        builder.addCase(assignOrdersToEmpThunk.fulfilled, (state, action) => {
+            console.log("assign order succeed");
 
 
 
-//         });
+        });
 
-//         builder.addCase(assignOrdersToEmpThunk.rejected, (state, action) => {
-//             console.log("order action: ", action);
-//         });
-//         builder.addCase(getCompletedOrdersForEmpThunk.fulfilled, (state, action) => {
-//             state.completedOrders = action.payload;
-//             console.log("completedOrders");
-//             console.log(state.completedOrders);
-//         });
+        builder.addCase(assignOrdersToEmpThunk.rejected, (state, action) => {
+            console.log("order action: ", action);
+        });
+        builder.addCase(getCompletedOrdersForEmpThunk.fulfilled, (state, action) => {
+            state.completedOrders = action.payload;
+            console.log("completedOrders");
+            console.log(state.completedOrders);
+        });
 
-//         builder.addCase(getCompletedOrdersForEmpThunk.rejected, (state, action) => {
-//             console.log("order action: ", action);
-//         });
+        builder.addCase(getCompletedOrdersForEmpThunk.rejected, (state, action) => {
+            console.log("order action: ", action);
+        });  
+         builder.addCase(getAllOrderDetailsThunk.fulfilled, (state, action) => {
+            state.allOrderDetail = action.payload;
+            console.log("allOrderDetail");
+            console.log(state.allOrderDetail);
+        });
+
+        builder.addCase(getAllOrderDetailsThunk.rejected, (state, action) => {
+            console.log("order action: ", action);
+        });
     }
 });

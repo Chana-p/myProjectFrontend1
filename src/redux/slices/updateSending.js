@@ -3,7 +3,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 export const UpdateSendingThunk = createAsyncThunk(
     'UpdateSending', 
     async ({orderid,empid}) => {
-        const res = await fetch(`https://myFirstProjectBackend.onrender.com/api/Orders/updateSending/${orderid}/${empid}`, {
+        const res = await fetch(`https://localhost:7064/api/Orders/updateSending/${orderid}/${empid}`, {
         method: 'PUT',
       //  body: JSON.stringify(details),
         headers: {

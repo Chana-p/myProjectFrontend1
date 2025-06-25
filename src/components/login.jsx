@@ -85,7 +85,7 @@ export const Login = () => {
                 <div className="container">
                     <div className="login-content" data-aos="fade-up">
                         <div className="login-logo-container">
-                            <img src={`${process.env.PUBLIC_URL}/basisLabait2.jpg`} alt="בסיס לבית" className="login-logo" />
+                            <img src={`${process.env.PUBLIC_URL}/basisLabait2.jpg`} alt="ContractorHub  " className="login-logo" />
                         </div>
                         <div className="login-form-container" data-aos="fade-up" data-aos-delay="200">
                             <h2>התחברות למערכת</h2>
@@ -132,7 +132,7 @@ export const Login = () => {
                 <div className="container">
                     <div className="footer-content">
                         <div className="footer-info">
-                            <p>© 2023 כל הזכויות שמורות לחברת בסיס לבית בע"מ</p>
+                            <p>© 2023 כל הזכויות שמורות לחברת ContractorHub   בע"מ</p>
                         </div>
                         <div className="footer-links">
                             <Link to="/">חזרה לדף הבית</Link>

@@ -281,8 +281,9 @@ import { Link, useNavigate } from 'react-router-dom';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import '../styles/Home.css';
+import { useSelector } from 'react-redux';
 export const Home = () => {
-  const [userData, setUserData] = useState(null);
+  const custDetails=useSelector(state=>state.user.userDetails);
   const [loading, setLoading] = useState(true);
   const [categories, setCategories] = useState([]);
   const [featuredProducts, setFeaturedProducts] = useState([]);
@@ -308,8 +309,7 @@ export const Home = () => {
         //   return;
         // }
         
-        //setUserData(JSON.parse(user));
-        
+              
         // טעינת קטגוריות
         // const categoriesResponse = await fetch('/api/categories');
         // const categoriesData = await categoriesResponse.json();
@@ -346,8 +346,8 @@ export const Home = () => {
   }, [navigate]);
 
   const handleLogout = () => {
-    localStorage.removeItem('user');
-    navigate('/login');
+    custDetails=null;
+    navigate('/');
   };
 
   if (loading) {
@@ -366,11 +366,11 @@ export const Home = () => {
         <div className="container">
           <div className="header-content">
             <div className="logo-container">
-              <img src={`${process.env.PUBLIC_URL}/basisLabait2.jpg`} alt="בסיס לבית" className="header-logo" />
+              <img src={`${process.env.PUBLIC_URL}/basisLabait2.jpg`} alt="ContractorHub  " className="header-logo" />
             </div>
             <div className="header-actions">
               <div className="user-welcome">
-                <span>שלום, {userData?.custName || 'אורח'}</span>
+                <span>שלום, {custDetails?.custname || 'אורח'}</span>
               </div>
               <div className="header-buttons">
                 <Link to="/cart" className="btn-cart">
@@ -402,7 +402,7 @@ export const Home = () => {
               <Link to="/newOrder" className="btn-primary">התחל בקנייה</Link>
             </div>
             <div className="banner-image">
-              <img  src={`${process.env.PUBLIC_URL}/basisLabait2.jpg`} alt="בסיס לבית" />
+              <img  src={`${process.env.PUBLIC_URL}/basisLabait2.jpg`} alt="ContractorHub  " />
             </div>
           </section>
 
@@ -420,7 +420,7 @@ export const Home = () => {
                   </div>
                   <h3>{category.name}</h3>
                   <p>{category.count} מוצרים</p>
-                  <Link to={`/products/category/${category.id}`} className="category-link">
+                  <Link to={`/newOrder`} className="category-link">
                     צפה במוצרים <i className="fas fa-arrow-left"></i>
                   </Link>
                 </div>
@@ -560,10 +560,10 @@ export const Home = () => {
         <div className="container">
           <div className="footer-content">
             <div className="footer-logo">
-              <img src={`${process.env.PUBLIC_URL}/basisLabait2.jpg`} alt="בסיס לבית" />
+              <img src={`${process.env.PUBLIC_URL}/basisLabait2.jpg`} alt="ContractorHub  " />
             </div>
             <div className="footer-info">
-              <p>© 2023 כל הזכויות שמורות לחברת בסיס לבית בע"מ</p>
+              <p>© 2023 כל הזכויות שמורות לחברת ContractorHub   בע"מ</p>
               <p>רחוב הבונים 15, אזור התעשייה, חולון | טלפון: 03-1234567</p>
             </div>
             <div className="footer-links">

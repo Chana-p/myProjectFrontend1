@@ -6,28 +6,9 @@ export const addCustomerThunk = createAsyncThunk(
         console.log("logon");
         let res;
         console.log(details.custName);
-        // if (details.custName.substring(0, 3) === "emp") {
-        //     console.log(details.custName.substring(3));
-        //     var newDetails = {
-        //         empId: details.custId,
-        //         eName: details.custName.substring(3),
-        //         empNum: 0,
-        //         eGmail: details.custEmail,
-        //         ephone: details.custPhone
-        //     }
-        //     res = await fetch('https://myFirstProjectBackend.onrender.com/api/Customer/logOn', {//https://myFirstProjectBackend.onrender.com/api/Employee/logOn
-        //         method: 'POST',
-        //         body: JSON.stringify(newDetails),
-        //         headers: {
-        //             'Content-Type': 'application/json'
-        //         }
-        //     })
-        // }
-
-        // else
-         res = await fetch('https://myFirstProjectBackend.onrender.com/api/Customer/logOn', {
+       
+        res = await fetch('https://localhost:7064/api/Customer/logOn', {
             method: 'POST',
-            mode: 'no-cors',
             body: JSON.stringify(details),
             headers: {
                 'Content-Type': 'application/json'

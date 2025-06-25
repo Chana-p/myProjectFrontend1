@@ -15,7 +15,7 @@
 //                 ephone: details.custPhone
                 
 //             }
-//             res = await fetch('https://myFirstProjectBackend.onrender.com/api/Employee/AddEmployee', {
+//             res = await fetch('https://localhost:7064/api/Employee/AddEmployee', {
 //                 method: 'POST',
 //                 body: JSON.stringify(newDetails),
 //                 headers: {
@@ -60,10 +60,9 @@ export const addEmployeeThunk = createAsyncThunk(
             
             console.log("שולח נתוני עובד:", newDetails);
             
-            const res = await fetch('https://myFirstProjectBackend.onrender.com/api/Employee/AddEmployee', {
+            const res = await fetch('https://localhost:7064/api/Employee/AddEmployee', {
                 method: 'POST',
                 body: JSON.stringify(newDetails),
-                mode: 'no-cors',
                 headers: {
                     'Content-Type': 'application/json',
                     'accept': '*/*'

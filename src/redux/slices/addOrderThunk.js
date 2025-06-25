@@ -4,7 +4,7 @@ export const addOrderThunk = createAsyncThunk(
     'addOrder', 
     async ({details,id,empId}) => {
         console.log(details);
-     const res = await fetch(`https://myFirstProjectBackend.onrender.com/api/Orders/addToCustomer/${id}/${empId}`, {
+     const res = await fetch(`https://localhost:7064/api/Orders/addToCustomer/${id}/${empId}`, {
         method: 'POST',
         body: JSON.stringify(details),
         headers: {

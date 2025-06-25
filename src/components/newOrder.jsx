@@ -1,364 +1,3 @@
-// import { useEffect, useState } from "react";
-// import { useDispatch, useSelector } from "react-redux";
-// import { useNavigate } from "react-router-dom";
-// import { getProductsThunk } from "../redux/slices/getProductsThunk";
-// import { addOrderThunk } from "../redux/slices/addOrderThunk";
-// import './newOrder.css';
-
-// // Material UI imports
-// import {
-//   ThemeProvider, createTheme, Box, Grid, Card, CardContent, CardMedia, Typography, Button, IconButton, Dialog, DialogTitle, DialogContent,
-//   DialogActions, FormControl, InputLabel, Select, MenuItem, Paper, Container, Divider, Chip
-// } from "@mui/material";
-// import AddIcon from '@mui/icons-material/Add';
-// import RemoveIcon from '@mui/icons-material/Remove';
-// import InfoIcon from '@mui/icons-material/Info';
-// import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-// import '@fontsource/roboto';
-// import { getEmployeesThunk } from "../redux/slices/getEmployeesThunk";
-
-// export const NewOrder = () => {
-//   const products = useSelector(state => state.Products.productsList);
-//   const dispatch = useDispatch();
-//   const navigate = useNavigate();
-//   const CID = useSelector(state => state.user.CID);
-//   const employees = useSelector(state => state.Employees.employees);
-
-//   const [myOrders, setMyOrders] = useState([]);
-//   const [employee, setEmployee] = useState("");
-//   const [openDialog, setOpenDialog] = useState(false);
-//   const [selectedProduct, setSelectedProduct] = useState(null);
-//   const [listEmps, setListEmps] = useState(false);
-
-// //use effect
-//   useEffect(() => {
-//     dispatch(getProductsThunk());
-//   }, [dispatch]);
-
-//   useEffect(() => {
-//     if (products.length > 0) {
-//       const initialOrders = products.map(p => ({
-//         prodId: p.prodId,
-//         prodName: p.pname,
-//         prodPic: p.ppicture,
-//         orderId: 0,
-//         count: 0,
-//         cost: 0
-//       }));
-//       setMyOrders(initialOrders);
-//     }
-//     console.log(products);
-//   }, [products]);
-
-//   // useEffect(() => {
-//   //   // Calculate order total whenever orders change
-//   //   const total = myOrders.reduce((sum, item) => {
-//   //     const product = products.find(p => p.prodId === item.prodId);
-//   //     return sum + (item.count * (product?.pprice || 0));
-//   //   }, 0);
-//   //   setOrderTotal(total);
-//   // }, [myOrders, products]);
-
-//   const getEmps = () => {
-//     dispatch(getEmployeesThunk());
-//     console.log(employees);
-//     setListEmps(true);
-//   }
-// useEffect(()=>{
-
-// },[listEmps])
-
-//   const handleQuantityChange = (prodId, change) => {
-//     setListEmps(true);
-//     getEmps();
-//     console.log("handleQuantityChange");
-//     setMyOrders(prevOrders =>
-//       prevOrders.map(order => {
-//         if (order.prodId === prodId) {
-//           const newCount = Math.max(0, order.count + change);
-//           return { ...order, count: newCount };
-//         }
-//         return order;
-//       })
-//     );
-//   };
-
-//   const handleOpenDetails = (product) => {
-//     setSelectedProduct(product);
-//     setOpenDialog(true);
-//   };
-
-//   const handleCloseDetails = () => {
-//     setOpenDialog(false);
-//   };
-
-//   const handleEmployeeChange = (event) => {
-//     setListEmps(true);
-//     setEmployee(event.target.value);
-//   };
-
-//   const handleFinishOrder = () => {
-//     const orderItems = myOrders.filter(item => item.count > 0);
-// console.log("handleFinishOrder");
-//     if (orderItems.length > 0) {
-//       dispatch(addOrderThunk({
-//         details: orderItems,
-//         id: CID,
-//         employeeId: employee
-//       }));
-//       navigate("/Home");
-//     } else {
-//       alert("לא נקלטה הזמנה");
-//     }
-//   };
-
-//   const handleImageError = (event) => {
-//     event.target.src = 'https://placehold.co/300x180/cccccc/333333?text=No+Image';
-//   };
-
-//  //רכיבי עיצוב
-//   // Custom theme with RTL support
-//   const theme = createTheme({
-//     direction: 'rtl',
-//     typography: {
-//       fontFamily: [
-//         'Roboto',
-//         '"Segoe UI Symbol"',
-//       ].join(','),
-//     },
-//     palette: {
-//       primary: {
-//         main: '#1976d2',
-//       },
-//       secondary: {
-//         main: '#f50057',
-//       },
-//       background: {
-//         default: '#f5f5f5',
-//       },
-//     },
-//   });
-
-
-//   return (
-//     <ThemeProvider theme={theme}>
-//       <Container maxWidth="lg" sx={{ mt: 4, mb: 8 }}>
-//         <Paper elevation={3} sx={{ p: 3, mb: 4, borderRadius: 2 }}>
-//           <Typography variant="h4" component="h1" gutterBottom align="center" sx={{ fontWeight: 'bold', color: '#1976d2' }}>
-//             הזמנה חדשה
-//           </Typography>
-//           <Divider sx={{ mb: 4 }}>
-//             <Chip label="בחר מוצרים" color="primary" />
-//           </Divider>
-
-//           <Grid container spacing={3}>
-//             {products.map((product) => {
-//               const orderItem = myOrders.find(item => item.prodId === product.prodId) || { count: 0 };
-
-//               return (
-
-//                 <Grid item xs={12} sm={6} md={3} key={product.prodId}> 
-//                   <Card
-//                     elevation={4}
-//                     sx={{
-//                       height: '100%',
-//                       display: 'flex',
-//                       flexDirection: 'column',
-//                       transition: 'transform 0.2s',
-//                       '&:hover': {
-//                         transform: 'scale(1.02)',
-//                       },
-//                       borderRadius: 2,
-//                       overflow: 'hidden'
-//                     }}
-//                   >
-//                     <CardMedia
-//                       component="img"
-//                       height={180}
-//                       image={product.ppicture}
-//                       alt={product.pname}
-//                       onError={handleImageError}
-//                       sx={{
-//                         objectFit: 'cover',
-//                         objectPosition: 'center',
-//                       }}
-//                     />
-//                     {/* <Box 
-//                         sx={{ 
-//                           position: 'absolute', 
-//                           bottom: 0, 
-//                           width: '100%', 
-//                           background: 'rgba(0,0,0,0.6)',
-//                           p: 1
-//                         }}
-//                       >
-//                         <Typography variant="h6" component="div" sx={{ color: 'teal', fontWeight: 'bold' }}>
-//                           {product.pname}
-//                         </Typography>
-//                       </Box> */}
-
-
-//                     <CardContent sx={{ flexGrow: 1, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-
-//                       <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
-
-//                                     <IconButton color="primary"
-//                           onClick={() => handleQuantityChange(product.prodId, 1)}
-//                         // sx={{ '&:hover': { backgroundColor: 'rgba(25, 118, 210, 0.04)' } }}
-//                         >
-//                           <AddIcon />
-//                         </IconButton>
-
-
-//                         <Typography variant="h6" sx={{ mx: 2, minWidth: '30px', textAlign: 'center' }}>
-//                           {orderItem.count}
-//                         </Typography>
-
-//                         <IconButton
-//                           color="primary"
-//                           onClick={() => handleQuantityChange(product.prodId, -1)}
-//                           disabled={orderItem.count <= 0}
-//                         // sx={{ '&:hover': { backgroundColor: 'rgba(25, 118, 210, 0.04)' } }}
-//                         >
-//                           <RemoveIcon />
-//                         </IconButton>
-
-//                       </Box>
-
-//                       <Button
-//                         variant="outlined"
-//                         startIcon={<InfoIcon />}
-//                         onClick={() => handleOpenDetails(product)}
-//                         fullWidth
-//                         sx={{ mt: 'auto' }}
-//                       >
-//                         פרטים נוספים
-//                       </Button>
-//                     </CardContent>
-//                   </Card>
-//                 </Grid>
-//               );
-//             })}
-//           </Grid>
-//         </Paper>
-
-//         {/* Order Summary and Checkout Section */}
-//         <Paper elevation={3} sx={{ p: 3, borderRadius: 2 }}>
-//           <Typography variant="h5" gutterBottom align="center" sx={{ fontWeight: 'bold', mb: 3 }}>
-//             סיום הזמנה
-//           </Typography>
-
-//           <Box onClick={(e)=>setListEmps(true)} sx={{ display: 'flex', flexDirection: { xs: 'column', sm: 'row' }, alignItems: 'center', justifyContent: 'space-between', mb: 2.5 }}>
-//             <FormControl sx={{ m: 1, minWidth: " 250px"}} onClick={(e)=>setListEmps(true)}>
-//               <InputLabel id="employee-select-label" >בחר עובד לטיפול בהזמנה</InputLabel>
-//               <Select
-//                 labelId="employee-select-label"
-//                 id="employee-select"
-//                 value={employee}
-//                 label="בחר עובד לטיפול בהזמנה"
-//                 onChange={handleEmployeeChange}
-//                 // sx={{font:"blueviolet"}}-----------------------------------------------------------------------------------------------
-//               >
-//                 {employees?.map((emp) => (
-//                   <MenuItem key={emp.ename} value={emp.ename}>
-//                     {emp.ename}
-//                   </MenuItem>
-//                 ))}
-//               </Select>
-//             </FormControl>
-
-//             <Box sx={{ display: 'flex', alignItems: 'center', mt: { xs: 2, sm: 0 } }}>
-//               <Button
-//                 variant="contained"
-//                 color="primary"
-//                 size="large"
-//                 startIcon={<ShoppingCartIcon />}
-//                 onClick={handleFinishOrder}
-//                 disabled={myOrders.every(item => item.count === 0) }
-//                 sx={{
-//                   px:2,
-//                   py: 3,
-//                   borderRadius: 2,
-//                   background: 'linear-gradient(45deg, #1976d2 30%, #42a5f5 90%)',
-//                   boxShadow: '0 3px 5px 2px rgba(33, 150, 243, .3)',
-//                   // color:"Highlight"-----------------------------------------------------------------------why this line isn't working
-//                 }}
-//               >
-//                 סיים הזמנה
-//               </Button>
-//             </Box>
-//           </Box>
-//         </Paper>
-//       </Container>
-
-//       {/* Product Details Dialog */}
-//       <Dialog
-//         open={openDialog}
-//         onClose={handleCloseDetails}
-//         maxWidth="md"
-//         fullWidth
-//       >
-//         {selectedProduct && (
-//           <>
-//             <DialogTitle sx={{ fontWeight: 'bold', bgcolor: 'primary.main', color: 'white' }}>
-//               {selectedProduct.pname}
-//             </DialogTitle>
-//             <DialogContent dividers>
-//               <Grid container spacing={3}>
-//                 <Grid item xs={12} md={6}>
-//                   <Box
-//                     component="img"
-//                     src={selectedProduct.ppicture
-//                       // && selectedProduct.ppicture.length > 6 
-//                       // ? selectedProduct.ppicture 
-//                       // : 'https://via.placeholder.com/400x300?text=No+Image'
-//                     }
-//                     alt={selectedProduct.pname}
-//                     sx={{
-//                       width: '100%',
-//                       borderRadius: 1,
-//                       maxHeight: 300,
-//                       objectFit: 'cover'
-//                     }}
-//                   />
-//                 </Grid>
-//                 <Grid item xs={12} md={6}>
-//                   <Typography variant="h6" gutterBottom>פרטי המוצר</Typography>
-//                   <Typography variant="body1" paragraph>
-//                     <strong>תיאור:</strong> {selectedProduct.pdescription}
-//                   </Typography>
-//                   <Typography variant="body1" paragraph>
-//                     <strong>חברה:</strong> {selectedProduct.pcompany}
-//                   </Typography>
-
-//                   {/* Add more product details as needed */}
-//                 </Grid>
-//               </Grid>
-//             </DialogContent>
-//             <DialogActions>
-//               <Button onClick={handleCloseDetails} color="primary">
-//                 סגור
-//               </Button>
-//               <Button
-//                 onClick={() => {
-//                   const orderItem = myOrders.find(item => item.prodId === selectedProduct.prodId);
-//                   handleQuantityChange(selectedProduct.prodId, 1);
-//                   handleCloseDetails();
-//                 }}
-//                 color="primary"
-//                 variant="contained"
-//               >
-//                 הוסף להזמנה
-//               </Button>
-//             </DialogActions>
-//           </>
-//         )}
-//       </Dialog>
-//     </ThemeProvider>
-//   );
-// };
-
-
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
@@ -369,7 +8,57 @@ import { getProductsThunk } from '../redux/slices/getProductsThunk';
 import { addOrderThunk } from "../redux/slices/addOrderThunk";
 import { getEmployeesThunk } from '../redux/slices/getEmployeesThunk';
 import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
+// קומפוננטת אלרט מותאמת אישית
+const CustomAlert = ({ isOpen, onClose, type, title, message, onConfirm }) => {
+  if (!isOpen) return null;
 
+  const getIcon = () => {
+    switch (type) {
+      case 'success':
+        return <i className="fas fa-check-circle"></i>;
+      case 'error':
+        return <i className="fas fa-exclamation-triangle"></i>;
+      case 'warning':
+        return <i className="fas fa-exclamation-circle"></i>;
+      case 'info':
+        return <i className="fas fa-info-circle"></i>;
+      default:
+        return <i className="fas fa-info-circle"></i>;
+    }
+  };
+
+  return (
+    <div className="custom-alert-overlay">
+      <div className={`custom-alert custom-alert-${type}`}>
+        <div className="alert-header">
+          <div className="alert-icon">
+            {getIcon()}
+          </div>
+          <h3 className="alert-title">{title}</h3>
+        </div>
+        <div className="alert-body">
+          <p className="alert-message">{message}</p>
+        </div>
+        <div className="alert-actions">
+          {onConfirm ? (
+            <>
+              <button className="alert-btn alert-btn-secondary" onClick={onClose}>
+                ביטול
+              </button>
+              <button className="alert-btn alert-btn-primary" onClick={onConfirm}>
+                אישור
+              </button>
+            </>
+          ) : (
+            <button className="alert-btn alert-btn-primary" onClick={onClose}>
+              אישור
+            </button>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+};
 export const NewOrder = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -384,7 +73,30 @@ export const NewOrder = () => {
   const employees = useSelector(state => state.Employees.employees);
   const [listEmps, setListEmps] = useState(false);
   const [employee, setEmployee] = useState(null);
+// State עבור האלרט המותאם אישית
+  const [alert, setAlert] = useState({
+    isOpen: false,
+    type: 'info',
+    title: '',
+    message: '',
+    onConfirm: null
+  });
 
+  // פונקציה להצגת אלרט
+  const showAlert = (type, title, message, onConfirm = null) => {
+    setAlert({
+      isOpen: true,
+      type,
+      title,
+      message,
+      onConfirm
+    });
+  };
+
+  // פונקציה לסגירת אלרט
+  const closeAlert = () => {
+    setAlert(prev => ({ ...prev, isOpen: false }));
+  };
   // אתחול ספריית האנימציות
   useEffect(() => {
     AOS.init({
@@ -427,7 +139,18 @@ export const NewOrder = () => {
 
   // פונקציה להסרת מוצר מהסל
   const removeFromCart = (productId) => {
-    setCart(cart.filter(item => item.prodId !== productId));
+  const product = cart.find(item => item.prodId === productId);
+
+    showAlert(
+      'warning',
+      'האם אתה בטוח?',
+      `האם ברצונך להסיר את "${product?.pname}" מההזמנה?`,
+      () => {
+        setCart(cart.filter(item => item.prodId !== productId));
+        closeAlert();
+        showAlert('info', 'הוסר מההזמנה', 'המוצר הוסר בהצלחה מההזמנה שלך');
+      }
+    );
   };
 
   // פונקציה לעדכון כמות של מוצר בסל
@@ -452,10 +175,11 @@ export const NewOrder = () => {
   const cartTotal = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
   //employees
   const getEmps = () => {
+    if (employees.length === 0){
     dispatch(getEmployeesThunk());
     console.log(employees);
     setListEmps(true);
-  }
+  }}
   const handleEmployeeChange = (event) => {
     setListEmps(true);
 console.log(event.target.value);
@@ -466,32 +190,45 @@ console.log(event.target.value);
   // פונקציה לשליחת ההזמנה
   const submitOrder = async () => {
     if (cart.length === 0) {
-      alert('הסל ריק. אנא הוסף מוצרים לפני שליחת ההזמנה.');
+      showAlert('warning', 'הסל ריק', 'אנא הוסף מוצרים לפני שליחת ההזמנה.');
       return;
     }
 
-    try {
+  showAlert(
+      'info',
+      'אישור הזמנה',
+      'האם אתה בטוח שברצונך לשלוח את ההזמנה?',
+      async () => {
+        try {
+          closeAlert();
 
-      dispatch(addOrderThunk({
-        details: cart.map(item => ({
-          "prodId": item.prodId,
-          "prodName": "string",
-          "prodPic": "string",
-          "orderId": 0,
-          "count": item.quantity,
-          "cost": 0
-        })),
-        id: CID,
-        empId: employee ? employee : 0
-      }));
-      // אישור הזמנה
-      alert('ההזמנה נשלחה בהצלחה!');
-      setCart([]);
-      navigate('/orders');
-    } catch (error) {
-      console.error('Error submitting order:', error);
-      alert('אירעה שגיאה בשליחת ההזמנה. אנא נסה שנית.');
-    }
+          dispatch(addOrderThunk({
+            details: cart.map(item => ({
+              "prodId": item.prodId,
+              "prodName": "string",
+              "prodPic": "string",
+              "orderId": 0,
+              "count": item.quantity,
+              "cost": 0
+            })),
+            id: CID,
+            empId: employee ? employee : 0
+          }));
+
+          // אישור הזמנה
+          showAlert('success', 'הזמנה נשלחה!', 'ההזמנה נשלחה בהצלחה! תקבל עדכון כשההזמנה תטופל.');
+          setCart([]);
+
+          setTimeout(() => {
+            navigate('/orders');
+          }, 2000);
+
+        } catch (error) {
+          console.error('Error submitting order:', error);
+          showAlert('error', 'שגיאה', 'אירעה שגיאה בשליחת ההזמנה. אנא נסה שנית.');
+        }
+      }
+    );
   };
 
   // תצוגת טעינה
@@ -552,7 +289,7 @@ console.log(event.target.value);
                   filteredProducts.map(product => (
                     <div className="product-card" key={product.prodId} data-aos="fade-up">
                       <div className="product-image">
-                        <img src={`${`https://myFirstProjectBackend.onrender.com/img/${product.ppicture}`}`} alt={product.name} />
+                        <img src={`${`https://myFirstProjectBackend.onrender.com${product.ppicture}`}`} alt={product.name} />
                       </div>
                       <div className="product-details">
                         <h3>{product.pname}</h3>
@@ -641,7 +378,18 @@ console.log(event.target.value);
                       </button>
                       <button
                         className="clear-cart-btn"
-                        onClick={() => setCart([])}
+                             onClick={() => {
+                          showAlert(
+                            'warning',
+                            'נקה סל',
+                            'האם אתה בטוח שברצונך לנקות את כל הסל?',
+                            () => {
+                              setCart([]);
+                              closeAlert();
+                              showAlert('info', 'הסל נוקה', 'כל המוצרים הוסרו מהסל בהצלחה');
+                            }
+                          );
+                        }}
                       >
                         נקה סל
                       </button>
@@ -744,7 +492,7 @@ console.log(event.target.value);
         <div className="container">
           <div className="footer-content">
             <div className="footer-info">
-              <p>© 2023 כל הזכויות שמורות לחברת בסיס לבית בע"מ</p>
+              <p>© 2023 כל הזכויות שמורות לחברת ContractorHub   בע"מ</p>
             </div>
             <div className="footer-support">
               <p>
@@ -754,6 +502,16 @@ console.log(event.target.value);
           </div>
         </div>
       </footer>
+      
+      {/* קומפוננטת האלרט המותאמת אישית */}
+      <CustomAlert
+        isOpen={alert.isOpen}
+        onClose={closeAlert}
+        type={alert.type}
+        title={alert.title}
+        message={alert.message}
+        onConfirm={alert.onConfirm}
+      />
     </div>
   );
 };
