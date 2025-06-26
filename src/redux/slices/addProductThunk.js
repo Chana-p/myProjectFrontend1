@@ -5,6 +5,8 @@ export const addProductThunk = createAsyncThunk(
   async (productData, { rejectWithValue }) => {
     try {
       console.log("addProductThunk", productData);
+      goodUrl=productData.ppicture-"https://cloudinary.com/"
+      console.log("goodUrl", goodUrl );
       
       // וודא שכל השדות הנדרשים קיימים ובפורמט הנכון
       const productToAdd = {
@@ -14,7 +16,7 @@ export const addProductThunk = createAsyncThunk(
         pprice: parseFloat(productData.pprice) || 0, // המרה למספר
         pimporter: productData.pimporter || "defaultImporter",
         pcompany: productData.pcompany || "defaultCompany",
-        ppicture: productData.ppicture || "",
+        ppicture: goodUrl || "",
         pdescription: productData.pdescription || ""
       };
       

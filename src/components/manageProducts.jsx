@@ -277,15 +277,28 @@ export const ManageProducts = () => {
       }
   
       const data = await response.json();
+      console.log("🔍 נתוני התמונה:", data);
+      
+      // אם השרת מחזיר URL מלא אבל אתה צריך נתיב יחסי:
+      let imagePath = data.imageUrl;
+      
+      // אם זה URL מלא של Cloudinary למשל, חלץ רק את החלק הרלוונטי
+      if (imagePath && imagePath.includes('cloudinary.com')) {
+        // חלץ רק את החלק אחרי הדומיין
+        const urlParts = imagePath.split('/');
+        imagePath = '/' + urlParts.slice(3).join('/'); // או לפי הפורמט שהשרת מצפה לו
+      }
+      
+      console.log("🔍 נתיב התמונה שנשמר:", imagePath);
+      
       setUploadingImage(false);
-  
       setSnackbar({
         open: true,
         message: 'התמונה הועלתה בהצלחה',
         severity: 'success'
       });
       
-      return data.imageUrl; // השרת מחזיר את הנתיב בשדה imageUrl
+      return imagePath;
     } catch (error) {
       console.error("שגיאה בהעלאת תמונה:", error);
       setUploadingImage(false);
