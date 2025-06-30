@@ -5,7 +5,7 @@ export const addProductThunk = createAsyncThunk(
   async (productData, { rejectWithValue }) => {
     try {
       console.log("addProductThunk", productData);
-     var goodUrl=productData.ppicture-"https://res.cloudinary.com/"
+    var goodUrl = productData.ppicture ? productData.ppicture.replace("https://res.cloudinary.com/", "") : "";
       console.log("goodUrl", goodUrl );
       
       // וודא שכל השדות הנדרשים קיימים ובפורמט הנכון
