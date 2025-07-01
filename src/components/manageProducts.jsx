@@ -551,7 +551,7 @@ const [categories, setCategories] = useState(["כלי עבודה", "חשמל", "
                     </Typography>
                     <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mt: 2 }}>
                       <Typography variant="h6" color="primary.main">
-                        ₪{product.pprice.toFixed(2)}
+                        ₪{product.pprice}
                       </Typography>
                       <Chip
                         icon={<InventoryIcon />}
