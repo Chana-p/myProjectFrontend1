@@ -153,7 +153,7 @@ export const ManageProducts = () => {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(12);
   const [filterCategory, setFilterCategory] = useState('all');
-
+const [categories, setCategories] = useState(["כלי עבודה", "חשמל", "בניין", "גינון", "ריהוט", "אחר"]);
   // State for product operations
   const [editingProduct, setEditingProduct] = useState(null);
   const [quantityDialogOpen, setQuantityDialogOpen] = useState(false);
