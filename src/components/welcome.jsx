@@ -163,14 +163,14 @@ window.addEventListener('load', wakeUpServer);
             </div>
             <div className="product-category" data-aos="flip-left" data-aos-delay="200">
               <div className="category-image tools">
-              <img height={"auto"} width={"100%"} src={`${process.env.PUBLIC_URL}/cleyavoda.jpg`} alt="ן" />
+              <img height={"auto"} width={"100%"} src={`${process.env.PUBLIC_URL}/cleyavoda2.jpg`} alt="ן" />
               </div>
               <h3>כלי עבודה</h3>
               <p>כלי עבודה חשמליים, ידניים ומקצועיים</p>
             </div>
             <div className="product-category" data-aos="flip-left" data-aos-delay="300">
               <div className="category-image plumbing">
-              <img height={"auto"} width={"100%"} src={`${process.env.PUBLIC_URL}/cleyavoda.jpg`} alt="חומרי בניין" />
+              <img height={"auto"} width={"100%"} src={`${process.env.PUBLIC_URL}/cleyavoda2.jpg`} alt="חומרי בניין" />
 
               </div>
               <h3>אינסטלציה</h3>
