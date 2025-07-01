@@ -286,7 +286,7 @@ export const ManageProducts = () => {
       if (imagePath && imagePath.includes('cloudinary.com')) {
         // חלץ רק את החלק אחרי הדומיין
         const urlParts = imagePath.split('/');
-        imagePath = '/' + urlParts.slice(3).join('/'); // או לפי הפורמט שהשרת מצפה לו
+        imagePath = '/' + urlParts.slice(8).join('/'); // או לפי הפורמט שהשרת מצפה לו
       }
       
       console.log("🔍 נתיב התמונה שנשמר:", imagePath);
@@ -535,7 +535,7 @@ export const ManageProducts = () => {
   component="img"
   image={product.ppicture?.startsWith('http') 
     ? product.ppicture 
-    : `https://myFirstProjectBackend.onrender.com${product.ppicture}`
+    : `https://res.cloudinary.com/dvqdnn9c4/image/upload/v1751363224/products${product.ppicture}`
   }
   alt={product.pname}
   onError={(e) => {
