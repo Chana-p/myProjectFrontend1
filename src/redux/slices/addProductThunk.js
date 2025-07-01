@@ -14,8 +14,9 @@ export const addProductThunk = createAsyncThunk(
         pname: productData.pname,
         psum: parseInt(productData.psum) || 0, // המרה למספר
         pprice: parseFloat(productData.pprice) || 0, // המרה למספר
-        pimporter: productData.pimporter || "defaultImporter",
-        pcompany: productData.pcompany || "defaultCompany",
+        pimporter: productData.pimporter || "ש.ל. יבוא ושיווק",
+        pcompany: productData.pcompany || "א.א בנאים ",
+        pcategory: productData.pcategory || "כלי עבודה",
         ppicture: goodUrl || "",
         pdescription: productData.pdescription || ""
       };

@@ -152,7 +152,7 @@ export const ManageProducts = () => {
   const [sortDirection, setSortDirection] = useState('asc');
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(12);
-  // const [filterCategory, setFilterCategory] = useState('all');
+  const [filterCategory, setFilterCategory] = useState('all');
 
   // State for product operations
   const [editingProduct, setEditingProduct] = useState(null);
@@ -230,7 +230,7 @@ export const ManageProducts = () => {
       pname: '',
       pprice: 0,
       pdescription: '',
-      // pcategory: '',
+      pcategory: '',
       psum: 0,
       ppicture: ''
     });
@@ -365,10 +365,10 @@ export const ManageProducts = () => {
     }
   };
 
-  // const handleFilterChange = (e) => {
-  //   setFilterCategory(e.target.value);
-  //   setPage(0); // Reset to first page when filtering
-  // };
+  const handleFilterChange = (e) => {
+    setFilterCategory(e.target.value);
+    setPage(0); // Reset to first page when filtering
+  };
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -380,25 +380,25 @@ export const ManageProducts = () => {
   };
 
   // Filter and sort products
-  const filteredProducts = products;
-  // .filter(product => 
-  //   (filterCategory === 'all' || product.pcategory === filterCategory) &&
-  //   (product.pname.toLowerCase().includes(searchTerm.toLowerCase()) ||
-  //    product.pdescription.toLowerCase().includes(searchTerm.toLowerCase()))
-  // )
-  // .sort((a, b) => {
-  //   let comparison = 0;
+  const filteredProducts = products
+  .filter(product => 
+    (filterCategory === 'all' || product.pcategory === filterCategory) &&
+    (product.pname.toLowerCase().includes(searchTerm.toLowerCase()) ||
+     product.pdescription.toLowerCase().includes(searchTerm.toLowerCase()))
+  )
+  .sort((a, b) => {
+    let comparison = 0;
 
-  //   if (sortBy === 'name') {
-  //     comparison = a.pname.localeCompare(b.pname);
-  //   } else if (sortBy === 'price') {
-  //     comparison = a.pprice - b.pprice;
-  //   } else if (sortBy === 'quantity') {
-  //     comparison = a.psum - b.psum;
-  //   }
+    if (sortBy === 'name') {
+      comparison = a.pname.localeCompare(b.pname);
+    } else if (sortBy === 'price') {
+      comparison = a.pprice - b.pprice;
+    } else if (sortBy === 'quantity') {
+      comparison = a.psum - b.psum;
+    }
 
-  //   return sortDirection === 'asc' ? comparison : -comparison;
-  // });
+    return sortDirection === 'asc' ? comparison : -comparison;
+  });
 
   // Paginate products
   const paginatedProducts = filteredProducts.slice(
@@ -444,8 +444,8 @@ export const ManageProducts = () => {
             </Grid>
             <Grid item xs={12} md={3}>
               <FormControl fullWidth variant="outlined">
-                {/* <InputLabel id="category-filter-label">סינון לפי קטגוריה</InputLabel> */}
-                {/* <Select
+                <InputLabel id="category-filter-label">סינון לפי קטגוריה</InputLabel>
+                <Select
                   labelId="category-filter-label"
                   // value={filterCategory}
                   onChange={handleFilterChange}
@@ -460,7 +460,7 @@ export const ManageProducts = () => {
                   {categories.map(category => (
                     <MenuItem key={category} value={category}>{category}</MenuItem>
                   ))}
-                </Select> */}
+                </Select>
               </FormControl>
             </Grid>
             <Grid item xs={12} md={5}>
@@ -550,9 +550,9 @@ export const ManageProducts = () => {
                       {product.pdescription}
                     </Typography>
                     <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mt: 2 }}>
-                      {/* <Typography variant="h6" color="primary.main">
+                      <Typography variant="h6" color="primary.main">
                         ₪{product.pprice.toFixed(2)}
-                      </Typography> */}
+                      </Typography>
                       <Chip
                         icon={<InventoryIcon />}
                         label={`מלאי: ${product.psum}`}
@@ -560,9 +560,9 @@ export const ManageProducts = () => {
                         variant="outlined"
                       />
                     
-                    {/* <Typography variant="body2" color="text.secondary" sx={{ mt: 1 }}>
+                    <Typography variant="body2" color="text.secondary" sx={{ mt: 1 }}>
                       קטגוריה: {product.pcategory}
-                    </Typography> */}
+                    </Typography>
                  
                   <Divider />
                   <CardActions sx={{ justifyContent: 'space-between', p: 1 }}>
@@ -695,7 +695,7 @@ export const ManageProducts = () => {
                   rows={3}
                 />
               </Grid>
-              {/* <Grid item xs={12} md={6}>
+              <Grid item xs={12} md={6}>
                 <FormControl fullWidth variant="outlined" required>
                   <InputLabel id="category-label">קטגוריה</InputLabel>
                   <Select
@@ -710,7 +710,7 @@ export const ManageProducts = () => {
                     ))}
                   </Select>
                 </FormControl>
-              </Grid> */}
+              </Grid>
               <Grid item xs={12} md={6}>
                 <TextField
                   name="psum"
