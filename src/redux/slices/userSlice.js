@@ -22,7 +22,7 @@ export const userSlice = createSlice({
     initialState: INITAIL_STATE_CUSTOMER,
     reducers: {
 
-        editcustomername: (state, action) => {
+        editUserDetails: (state, action) => {
             state.customername = action.payload;
         },
         editPassword: (state, action) => {
@@ -125,4 +125,4 @@ export const userSlice = createSlice({
     }
 });
 
-export const { editcustomername, editPassword, editCID } = userSlice.actions;
+export const { editUserDetails, editPassword, editCID } = userSlice.actions;

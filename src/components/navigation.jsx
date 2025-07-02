@@ -32,6 +32,7 @@ import BarChartIcon from '@mui/icons-material/BarChart';
 import LogoutIcon from '@mui/icons-material/Logout';
 import PersonIcon from '@mui/icons-material/Person';
 import SupportAgentIcon from '@mui/icons-material/SupportAgent';
+import { editUserDetails } from '../redux/slices/userSlice';
 
 // לוגו מותאם אישית
 const Logo = styled('div')(({ theme }) => ({
@@ -117,8 +118,7 @@ export const Navigation = () => {
 
   // פונקציית התנתקות
   const handleLogout = () => {
-    // כאן תוכל להוסיף את הלוגיקה של ההתנתקות
-    // dispatch(logoutAction());
+    dispatch(editUserDetails({}));
     navigate('/welcome');
   };
 
