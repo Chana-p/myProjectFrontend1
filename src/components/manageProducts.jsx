@@ -383,8 +383,8 @@ const [categories, setCategories] = useState(["כלי עבודה", "חשמל", "
   const filteredProducts = products
   .filter(product => 
     (filterCategory === 'all' || product.pcategory === filterCategory) &&
-    (product.pcategory.includes(searchTerm) ||
-     product.pdescription.includes(searchTerm))
+    (product.pcategory===searchTerm ||
+     product.pdescription===searchTerm)
   )
   .sort((a, b) => {
     let comparison = 0;

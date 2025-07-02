@@ -168,7 +168,7 @@ export const NewOrder = () => {
   // פונקציה לסינון מוצרים לפי קטגוריה וחיפוש
   const filteredProducts = products?.filter(product => {
     const matchesCategory = selectedCategory === 'all' || product.category === selectedCategory;
-    const matchesSearch = product.pcategory.includes(searchTerm);
+    const matchesSearch = product.pcategory===searchTerm;
     return matchesCategory && matchesSearch;
   });
 
