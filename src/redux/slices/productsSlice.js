@@ -25,8 +25,8 @@ export const productsSlice = createSlice({
         // הוספת מקרה שהט'נק הסתיים בהצלחה
         builder.addCase(getProductsThunk.fulfilled, (state, action) => {
             console.log("get products succeed");
-           
-            state.productsList = action.payload;
+           console.log(action.payload);
+           state.productsList = action.payload;
       
             
         });
