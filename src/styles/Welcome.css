@@ -154,6 +154,9 @@
     left: 0;
     width: 100%;
     line-height: 0;
+     height: 80px; /* הקטן את הגובה */
+  overflow: hidden;
+  z-index: 1;
   }
   
   .hero-wave path {
