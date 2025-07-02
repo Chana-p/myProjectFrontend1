@@ -383,7 +383,7 @@ const [categories, setCategories] = useState(["כלי עבודה", "חשמל", "
   const filteredProducts = products
   .filter(product => 
     (filterCategory === 'all' || product.pcategory === filterCategory) &&
-    (product.pname.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    (product.pcategory.toLowerCase().includes(searchTerm.toLowerCase()) ||
      product.pdescription.toLowerCase().includes(searchTerm.toLowerCase()))
   )
   .sort((a, b) => {

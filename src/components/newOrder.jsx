@@ -64,7 +64,8 @@ export const NewOrder = () => {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(true);
   const products = useSelector(state => state.Products.productsList);
-  const [categories, setCategories] = useState(['חומרי בניין', 'כלי עבודה', 'אינסטלציה', 'חשמל']);
+  const [categories, setCategories] = useState([,"אינסטלציה","כלי עבודה", "חשמל", "בניין", "גינון", "ריהוט", "אחר"]);
+  
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [searchTerm, setSearchTerm] = useState('');
   const [cart, setCart] = useState([]);
@@ -167,7 +168,7 @@ export const NewOrder = () => {
   // פונקציה לסינון מוצרים לפי קטגוריה וחיפוש
   const filteredProducts = products?.filter(product => {
     const matchesCategory = selectedCategory === 'all' || product.category === selectedCategory;
-    const matchesSearch = product.pname.includes(searchTerm);
+    const matchesSearch = product.pcategory.includes(searchTerm);
     return matchesCategory && matchesSearch;
   });
 
