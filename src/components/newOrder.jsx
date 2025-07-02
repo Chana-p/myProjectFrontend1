@@ -295,7 +295,7 @@ console.log(event.target.value);
                       <div className="product-details">
                         <h3>{product.pname}</h3>
                         <p className="product-category">כלי עבודה</p> {/*{product.category} */}
-                        <p className="product-price">product.price.toFixed(2)</p>{/* ₪ 10*/}
+                        <p className="product-price">{product.pprice}</p>{/* ₪ 10*/}
                         <p className="product-stock">במלאי: {product.psum}</p>
                       </div>
                       <button
