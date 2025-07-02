@@ -23,7 +23,15 @@ export const userSlice = createSlice({
     reducers: {
 
         editUserDetails: (state, action) => {
+            state.userDetails = action.payload;
             state.customername = action.payload;
+            state.password="";
+            state.CID=-1;
+            state.EID=-1;
+            state.sucsses=false;
+            state.failed=false;
+            state.userType="";
+
         },
         editPassword: (state, action) => {
             state.password = action.payload;
@@ -31,7 +39,10 @@ export const userSlice = createSlice({
         editCID: (state, action) => {
             state.CID = action.payload;
             console.log(state.CID);
-        }
+        },
+         editcustomername: (state, action) => {
+            state.customername = action.payload;
+        },
     },
 
 
@@ -125,4 +136,4 @@ export const userSlice = createSlice({
     }
 });
 
-export const { editUserDetails, editPassword, editCID } = userSlice.actions;
+export const { editUserDetails, editPassword, editCID, editcustomername } = userSlice.actions;
