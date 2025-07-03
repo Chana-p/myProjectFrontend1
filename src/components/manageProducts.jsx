@@ -401,7 +401,7 @@ const [categories, setCategories] = useState(["כלי עבודה", "חשמל", "
   // });
 const filteredProducts = (() => {
   const filtered = products?.filter(product => {
-    const matchesCategory = selectedCategory === 'כל המוצרים' || product.category === selectedCategory;
+    const matchesCategory = searchterm === 'כל המוצרים' || product.category === searchterm;
     const matchesSearch = product.pcategory === searchTerm;
     return matchesCategory && matchesSearch;
   });
