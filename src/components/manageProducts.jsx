@@ -380,25 +380,36 @@ const [categories, setCategories] = useState(["כלי עבודה", "חשמל", "
   };
 
   // Filter and sort products
-  const filteredProducts = products
-  .filter(product => 
-    (filterCategory === 'all' || product.pcategory === filterCategory) &&
-    (product.pcategory===searchTerm ||
-     product.pdescription===searchTerm)
-  )
-  .sort((a, b) => {
-    let comparison = 0;
+  // const filteredProducts = products
+  // .filter(product => 
+  //   (filterCategory === 'all' || product.pcategory === filterCategory) &&
+  //   (product.pcategory===searchTerm ||
+  //    product.pdescription===searchTerm)
+  // )
+  // .sort((a, b) => {
+  //   let comparison = 0;
 
-    if (sortBy === 'name') {
-      comparison = a.pname.localeCompare(b.pname);
-    } else if (sortBy === 'price') {
-      comparison = a.pprice - b.pprice;
-    } else if (sortBy === 'quantity') {
-      comparison = a.psum - b.psum;
-    }
+  //   if (sortBy === 'name') {
+  //     comparison = a.pname.localeCompare(b.pname);
+  //   } else if (sortBy === 'price') {
+  //     comparison = a.pprice - b.pprice;
+  //   } else if (sortBy === 'quantity') {
+  //     comparison = a.psum - b.psum;
+  //   }
 
-    return sortDirection === 'asc' ? comparison : -comparison;
+  //   return sortDirection === 'asc' ? comparison : -comparison;
+  // });
+const filteredProducts = (() => {
+  const filtered = products?.filter(product => {
+    const matchesCategory = selectedCategory === 'כל המוצרים' || product.category === selectedCategory;
+    const matchesSearch = product.pcategory === searchTerm;
+    return matchesCategory && matchesSearch;
   });
+  
+  // אם הרשימה המסוננת ריקה, החזר את כל המוצרים
+  return filtered?.length > 0 ? filtered : products;
+})();
+
 
   // Paginate products
   const paginatedProducts = filteredProducts.slice(

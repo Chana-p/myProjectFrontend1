@@ -166,11 +166,16 @@ export const NewOrder = () => {
   };
 
   // פונקציה לסינון מוצרים לפי קטגוריה וחיפוש
-  const filteredProducts = products?.filter(product => {
+  const filteredProducts = (() => {
+  const filtered = products?.filter(product => {
     const matchesCategory = selectedCategory === 'כל המוצרים' || product.category === selectedCategory;
-    const matchesSearch = product.pcategory===searchTerm;
+    const matchesSearch = product.pcategory === searchTerm;
     return matchesCategory && matchesSearch;
   });
+  
+  // אם הרשימה המסוננת ריקה, החזר את כל המוצרים
+  return filtered?.length > 0 ? filtered : products;
+})();
 
   // חישוב סכום ההזמנה
   const cartTotal = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
